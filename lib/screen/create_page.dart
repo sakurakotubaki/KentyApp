@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:kenty_app/domain/todo.dart';
+import 'package:kenty_app/domain/todo/todo.dart';
 import 'package:kenty_app/extention/push.dart';
 import 'package:kenty_app/provider/firestore_provider.dart';
 import 'package:kenty_app/screen/document_page.dart';

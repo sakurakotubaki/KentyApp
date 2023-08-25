@@ -1,5 +1,4 @@
-
-import 'package:kenty_app/domain/todo.dart';
+import 'package:kenty_app/domain/todo/todo.dart';
 
 abstract class TodoBase {
   Future<void> createTodo(Todo todo);
