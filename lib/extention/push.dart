@@ -12,3 +12,17 @@ extension BuildContextE on BuildContext {
     );
   }
 }
+
+/// [pushAndRemoveUntilで画面遷移をする関数を作成]
+extension BuildContextE2 on BuildContext {
+  Future<void> toAndRemoveUntil(Widget view) async {
+    await Navigator.of(this).pushAndRemoveUntil(
+      MaterialPageRoute(
+        builder: (context) {
+          return view;
+        },
+      ),
+      (route) => false,
+    );
+  }
+}
