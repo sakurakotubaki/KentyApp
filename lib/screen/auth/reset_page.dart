@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kenty_app/provider/auth_provider.dart';
 import 'package:kenty_app/state/controller.dart';
 
+// この画面は、パスワードをリセットする画面です。
 class ResetPage extends ConsumerWidget {
   const ResetPage({super.key});
 
@@ -11,6 +12,9 @@ class ResetPage extends ConsumerWidget {
     final password = ref.watch(emailControllerProvider);
 
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('パスワードをリセット'),
+      ),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Container(
@@ -34,11 +38,6 @@ class ResetPage extends ConsumerWidget {
               ),
               const SizedBox(height: 20),
               ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.grey[300],
-                    shape: const CircleBorder(),
-                    padding: const EdgeInsets.all(60),
-                  ),
                   onPressed: () async {
                     try {
                       await ref

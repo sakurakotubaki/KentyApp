@@ -5,6 +5,7 @@ import 'package:kenty_app/provider/auth_provider.dart';
 import 'package:kenty_app/screen/auth/user_page.dart';
 import 'package:kenty_app/state/controller.dart';
 
+// この画面は、ログイン画面です。
 class SignUpScreen extends ConsumerWidget {
   const SignUpScreen({Key? key}) : super(key: key);
 
@@ -16,6 +17,9 @@ class SignUpScreen extends ConsumerWidget {
     final password = ref.watch(passwordControllerProvider);
 
     return Scaffold(
+  appBar: AppBar(
+    title: const Text('新規登録'),
+  ),
       body: SingleChildScrollView(
         child: Container(
           width: MediaQuery.of(context).size.width,
@@ -49,11 +53,6 @@ class SignUpScreen extends ConsumerWidget {
               ),
               const SizedBox(height: 50),
               ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.redAccent,
-                  shape: const CircleBorder(),
-                  padding: const EdgeInsets.all(60),
-                ),
                 onPressed: () async {
                   try {
                     await authService.signUp(email.text, password.text);

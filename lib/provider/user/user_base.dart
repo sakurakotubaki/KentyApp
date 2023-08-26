@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kenty_app/domain/users/users.dart';
 import 'package:kenty_app/provider/auth_provider.dart';
@@ -8,6 +7,9 @@ base class UserBase {
   Ref ref;
   UserBase(this.ref);// refはUserRepositoryのref
 }
+
+// UserBaseを継承したUserRepositoryを使うためのProvider
+final userRepositoryProvider = Provider((ref) => UserRepository(ref));
 
 base class UserRepository extends UserBase {
   UserRepository(super.ref);//super.refはUserBaseのref
@@ -26,19 +28,19 @@ base class UserRepository extends UserBase {
     }
   }
 
-  // userコレクションのデータを.getで取得する
-  Future<DocumentSnapshot> readUser() async {
-    try {
-      final uid = ref.watch(uidProvider);
-      return await ref
-          .read(fireStoreProvider)
-          .collection('user')
-          .doc(uid)
-          .get();
-    } catch (e) {
-      throw e.toString();
-    }
-  }
+  // // userコレクションのデータを.getで取得する
+  // Future<DocumentSnapshot> readUser() async {
+  //   try {
+  //     final uid = ref.watch(uidProvider);
+  //     return await ref
+  //         .read(fireStoreProvider)
+  //         .collection('user')
+  //         .doc(uid)
+  //         .get();
+  //   } catch (e) {
+  //     throw e.toString();
+  //   }
+  // }
 
   // userコレクションのデータを.updateで更新する
   Future<void> updateUser(Users users) async {
@@ -67,5 +69,5 @@ base class UserRepository extends UserBase {
       throw e.toString();
     }
   }
-  
+
 }
