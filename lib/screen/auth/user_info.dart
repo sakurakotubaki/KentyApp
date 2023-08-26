@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kenty_app/extention/push.dart';
 import 'package:kenty_app/provider/user/user_base.dart';
 import 'package:kenty_app/provider/user/user_provider.dart';
-
+import 'package:kenty_app/screen/auth/update_user.dart';
+// ユーザー情報を表示する画面
 class userInfo extends ConsumerWidget {
   const userInfo({super.key});
 
@@ -11,6 +13,13 @@ class userInfo extends ConsumerWidget {
     final users = ref.watch(userFutureProvider);
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          IconButton(
+              onPressed: () {
+                context.to(const UpdateUser());
+              },
+              icon: const Icon(Icons.edit))
+        ],
         title: const Text('ユーザー情報'),
       ),
       body: Container(
