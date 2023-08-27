@@ -1,5 +1,13 @@
 # kenty_app
+
 Firestore学習用のアプリ
+
+## 初期設定
+
+1. Firebase で プロジェクトを新規作成する
+1. `firebase login` でプロジェクトを作成したアカウントでログインする
+1. `flutterfire configure --project=${作成したプロジェクト名}` で `lib/firebase_options.dart` を作成する ( .gitignore している )
+1. F5 でデバッグ実行できれば OK.
 
 ## データを追加するときの方法
 単一のドキュメントを作成または上書きするには、言語固有の次の set() メソッドを使用します。
