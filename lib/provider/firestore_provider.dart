@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:kenty_app/domain/todo.dart';
+import 'package:kenty_app/domain/todo/todo.dart';
 import 'package:kenty_app/interface/todo.dart';
 import 'package:kenty_app/provider/auth_provider.dart';
 
@@ -34,10 +34,12 @@ class TodoRepostitory implements TodoBase {
   @override
   Future<void> createTodo(Todo todo) async {
     try {
+      final uid = ref.watch(uidProvider);
       await ref
           .read(fireStoreProvider)
           .collection('todo')
-          .add(todo.toJson());
+          .doc(uid)
+          .set(todo.toJson());
     } catch (e) {
       throw e.toString();
     }
