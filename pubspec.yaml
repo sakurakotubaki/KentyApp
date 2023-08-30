@@ -43,6 +43,7 @@ dependencies:
   image_picker: ^1.0.2
   firebase_storage: ^11.2.6
   image: ^4.0.17
+  table_calendar: ^3.0.9
 
 dev_dependencies:
   build_runner: ^2.4.6
